@@ -1,0 +1,86 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Interactivity</title>
+    <style>
+        #dropdown { display: none; }
+        #mousePosition { position: absolute; top: 0; left: 0; }
+    </style>
+</head>
+<body>    <h1>JavaScript Interactive Features</h1>    <!-- 1. Button with Alert -->
+    <button onclick="alert('Button Clicked!')">Click Me</button>    <!-- 2. Change Text Color on Hover -->
+    <p onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">
+        Hover over this text to change its color.
+    </p>    <!-- 3. Form Validation -->
+    <form onsubmit="return validateForm(event)">
+        <input type="text" id="requiredField" placeholder="Required Field" required>
+        <button type="submit">Submit</button>
+    </form>    <!-- 4. Image Gallery -->
+    <img id="mainImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE6CmC5rMn4mvYCFDOUSoEyKxQ7MEdEc-ywg&s" alt="Main Image" style="width:300px;">
+    <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFIQX-EldQZEu2mkXyqDiyg_7RXdcBW2GXmQ&s" onclick="changeImage('image1.jpg')" alt="Thumbnail 1" style="width:100px;">
+        <img src="data:image/jpeg;base64,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" onclick="changeImage('image2.jpg')" alt="Thumbnail 2" style="width:100px;">
+    </div>    <!-- 5. Dropdown Menu -->
+    <nav>
+        <div onmouseover="document.getElementById('dropdown').style.display='block'"
+             onmouseout="document.getElementById('dropdown').style.display='none'">
+            Menu
+            <div id="dropdown">
+                <a href="#">Item 1</a>
+                <a href="#">Item 2</a>
+            </div>
+        </div>
+    </nav>    <!-- 6. Counter -->
+    <button onclick="incrementCounter()">Click Me</button>
+    <p id="counterDisplay">Counter: 0</p>    <!-- 7. Checkbox to Enable Button -->
+    <input type="checkbox" id="toggleCheckbox" onchange="toggleButton()"> Enable Button
+    <button id="enabledButton" disabled>Action</button>    <!-- 8. Display Mouse Position -->
+    <div id="mousePosition"></div>    <!-- 9. Change Background Color on Key Press -->
+    <p>Press any key to change the background color.</p>    <!-- 10. Format Phone Number Input -->
+    <input type="text" id="phoneInput" oninput="formatPhoneNumber()" placeholder="(123) 456-7890">    <script>
+        // Form Validation
+        function validateForm(event) {
+            const field = document.getElementById('requiredField').value;
+            if (!field) {
+                alert('Please fill in the required field.');
+                event.preventDefault();
+            }
+        }        // Image Gallery
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }        // Counter
+        let counter = 0;
+        function incrementCounter() {
+            counter++;
+            if (counter > 10) counter = 0;
+            document.getElementById('counterDisplay').innerText = 'Counter: ' + counter;
+        }        // Checkbox to Enable Button
+        function toggleButton() {
+            const checkbox = document.getElementById('toggleCheckbox');
+            document.getElementById('enabledButton').disabled = !checkbox.checked;
+        }        // Display Mouse Position
+        document.onmousemove = function(event) {
+            const positionDisplay = document.getElementById('mousePosition');
+            positionDisplay.innerText = `X: ${event.clientX}, Y: ${event.clientY}`;
+        };        // Change Background Color on Key Press
+        document.onkeydown = function() {
+            document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        };        // Format Phone Number
+        function formatPhoneNumber() {
+            const input = document.getElementById('phoneInput');
+            let value = input.value.replace(/\D/g, '').substring(0, 10);
+            if (value.length >= 6) {
+                value = `(${value.substring(0, 3)}) ${value.substring(3, 6)}-${value.substring(6, 10)}`;
+            } else if (value.length >= 3) {
+                value = `(${value.substring(0, 3)}) ${value.substring(3)}`;
+            } else if (value.length > 0) {
+                value = `(${value}`;
+            }
+            input.value = value;
+        }
+    </script></body>
+</html>
+
+

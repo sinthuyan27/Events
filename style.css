@@ -1,0 +1,8 @@
+function validateForm() {
+    const field = document.getElementById('requiredField').value;
+    if (!field) {
+        alert('Please fill in the required field.');
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
